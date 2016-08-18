@@ -1,8 +1,10 @@
 # flower
 
-![](flower.png =500x)
+<img src="flower.png" alt="flower created with flower" width="500" />
 
 Generate flowers and share them with people to show that you care about them.
+
+[Demo](http://harrisonbachrach.com/flower)
 
 ## Requirements
 
