@@ -2,7 +2,7 @@
 
 <img src="flower.png" alt="flower created with flower" width="500" />
 
-Generate flowers and share them with people to show that you care about them.
+Generate flowers and share them with people to show that you care.
 
 [Demo](http://harrisonbachrach.com/flower)
 
