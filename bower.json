@@ -1,0 +1,27 @@
+{
+  "name": "flower",
+  "main": "flower.js",
+  "authors": [
+    "HarrisonB <harrison.bachrach@gmail.com>"
+  ],
+  "description": "Create nice looking flowers to share with friends",
+  "keywords": [
+    "flower",
+    "nice",
+    "friends",
+    "paper"
+  ],
+  "license": "MIT",
+  "homepage": "harrisonbachrach.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper": "^0.10.2",
+    "clipboard": "^1.5.12"
+  }
+}
