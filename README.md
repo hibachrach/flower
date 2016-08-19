@@ -22,7 +22,7 @@ or, equivalently,
 ## TODO
 
 - Include customizable messages with flowers
-- Reduce URL length
+- ~~Reduce URL length~~
 - Allow for better customizability
 
 ----

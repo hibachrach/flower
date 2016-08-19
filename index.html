@@ -101,16 +101,16 @@
 	<body>
 		<p id="instructions" class="topText">Click to make petals.</p>
 		<p id="message" class="topText">
-			Someone made you this flower for you because they care about
+			Someone made you this flower because they care about
 			you.<br />Hope it made you smile.</p>
 		<a id="reset" href="" onclick="window.location.href = window.location.href.split('#')[0];">Start over</a>
 		<canvas id="myCanvas" resize="true"></canvas>
 		<!-- Trigger -->
-		<button id="btn" data-clipboard-text="qwerty" data-clipboard-action="copy">
+		<button id="btn" data-clipboard-text="" data-clipboard-action="copy">
 			    Copy URL to clipboard to share
 		</button>
 		<a id="make_your_own" href="#">Make your own to share</a>
-		<code id="plainTextURL">http://localhost:8000/flower.html#%5B%5B150%2C8%2C%22%23dae6a1%22%2C0.08805913000245402%5D%2C%5B49%2C6%2C%22%23b0a1e6%22%2C0.542440759497054%5D%2C%5B49%2C8%2C%22%23b4a1e6%22%2C0.70037500312165%5D%2C%5B49%2C9%2C%22%23a1e6a8%22%2C0.32200876924403854%5D%2C%5B49%2C8%2C%22%23c0e6a1%22%2C0.5642411830856091%5D%5D</code>
+		<code id="plainTextURL"></code>
 		<script type="text/javascript" src="./bower_components/clipboard/dist/clipboard.min.js"></script>
 		<script type="text/paperscript" src="./flower.js" canvas="myCanvas"></script>
 		<script type="text/javascript">

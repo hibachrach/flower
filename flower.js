@@ -9,7 +9,14 @@ var resetLink = document.getElementById("reset");
 var url = document.getElementById("plainTextURL");
 if (window.location.hash) {
 	reachedEndState = true;
-	flowerStore = JSON.parse(decodeURIComponent(window.location.hash.substring(1)));
+	var encodedData = window.location.hash.substring(1);
+	try {
+		// Try to decode base64
+		flowerStore = JSON.parse(atob(encodedData));
+	} catch (e) {
+		// or use method for older encoding
+		flowerStore = JSON.parse(decodeURIComponent(encodedData));
+	}
 	flowerStore.forEach(function(a) {
 		drawFlower.apply(undefined, a);
 		message.style.display = "block";
@@ -21,21 +28,14 @@ if (window.location.hash) {
 	instructions.style.display = "block";
 }
 function setUpShare() {
-	// window.location.hash = "#" + encodeURIComponent(JSON.stringify(flowerStore));
-	// shareText = new PointText(new Point(0, 400) + origin);
-	// shareText.justification = 'center';
-	// shareText.fillColor = 'black';
-	// shareText.content = "Share your flower:\n " + window.location;
 	shareSetUp = true;
 	var button = document.getElementById("btn");
 	button.style.display = "block";
-	button.setAttribute("data-clipboard-text", window.location.href);
+	var encodedData = btoa(JSON.stringify(flowerStore));
+	var shareURL = window.location.href.split('#')[0] + '#' + encodedData;
+	button.setAttribute("data-clipboard-text", shareURL);
 	url.style.display = "inline-block";
-	url.innerHTML = window.location.href;
-	// url.onclick = function() {
-	// 	this.selectionStart = 0;
-	// 	this.selectionEnd = this.value.length;
-	// };
+	url.innerHTML = shareURL;
 }
 function drawFlower(r, n, c, w) {
 	var p = new Point(r, 0);
