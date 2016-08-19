@@ -50,7 +50,7 @@
 				font-family: Courier, serif;
 				font-size: 7pt;	
 				top: 15%;
-				width: 80%;
+				width: 15%;
 				word-break: break-all;
 			}
 			#reset {
@@ -75,6 +75,25 @@
 			canvas[resize] {
 				width: 100%;
 				height: 100%;
+			}
+			@media (min-width:320px) and (max-width:800px) and
+			(-webkit-device-pixel-ratio: 3) {
+				p, a, #btn {
+					font-size: 1em;
+				}
+				#btn {
+					top: 3%;
+					width: 16em;
+				}
+				#plainTextURL {
+					top: 12%;
+					width: 90%;
+				}
+				.topText {
+					bottom: 11%;
+					width: 15em;
+				}
+
 			}
 			@media (min-width:320px) and (max-width:800px) and
 			(-webkit-device-pixel-ratio: 2) {

@@ -49,7 +49,7 @@ function drawFlower(r, n, c, w) {
 		});
 	}
 	if (w === undefined) {
-		w = Math.random();
+		w = Math.random().toPrecision(3);
 	}
 	function drawPetal(tip) {
 		var path = new Path();
