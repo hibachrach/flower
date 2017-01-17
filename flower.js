@@ -6,7 +6,7 @@ var shareSetUp = false;
 var instructions = document.getElementById("instructions");
 var message = document.getElementById("message");
 var resetLink = document.getElementById("reset");
-var url = document.getElementById("plainTextURL");
+var url = document.getElementById("plain-text-url");
 if (window.location.hash) {
 	reachedEndState = true;
 	var encodedData = window.location.hash.substring(1);
@@ -34,7 +34,7 @@ function setUpShare() {
 	var encodedData = btoa(JSON.stringify(flowerStore));
 	var shareURL = window.location.href.split('#')[0] + '#' + encodedData;
 	button.setAttribute("data-clipboard-text", shareURL);
-	url.style.display = "inline-block";
+	url.style.display = "block";
 	url.innerHTML = shareURL;
 }
 function drawFlower(r, n, c, w) {

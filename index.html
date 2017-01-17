@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 		<!-- CSS necessary for code to work as expected -->
 		<link href="https://fonts.googleapis.com/css?family=Slabo+27px" type="text/css" rel="stylesheet">
+ 		<!-- CSS necessary for code to work as expected -->
 		<style type="text/css">
 			* {
 				font-family: 'Slabo 27px', serif;
@@ -15,16 +15,26 @@
 				overflow: hidden;
 				height: 100%;
 			}
-			p, a, #btn, #plainTextURL {
+			.bottom-text, #top-text-wrapper {
 				display: inline-block;
+				width: 12em;
 				font-size: 14pt;
 				text-align: center;
-				position: absolute;
 				left: 50%;
 				transform: translate(-50%, 0%);
-				width: 12em;
+				position: absolute;
 			}
-			.topText {
+			#top-text-wrapper {
+				top: 1%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#top-text-wrapper > * {
+				margin-top: 1em;
+				margin-bottom: 1em;
+			}
+			.bottom-text {
 				bottom: 13%;
 			}
 			#instructions {
@@ -40,18 +50,25 @@
 				outline: none;
 				padding: .5em;
 			}
+			#copy-confirmation {
+				display: none;
+				font-size: 9pt;
+			}
 			#btn {
 				display: none;
 				top: 5%;
 				width: 13em;
+				font-size: 12pt;
 			}
-			#plainTextURL {
+			#plain-text-url {
 				display: none;
 				font-family: Courier, serif;
 				font-size: 7pt;	
-				top: 15%;
-				width: 15%;
 				word-break: break-all;
+				/* Make it easier to select text (especially on mobile) */
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				user-select: all;
 			}
 			#reset {
 				bottom: 5%;
@@ -85,11 +102,14 @@
 					top: 3%;
 					width: 16em;
 				}
-				#plainTextURL {
-					top: 12%;
+				#copy-confirmation {
+					top: 6%;
+				}
+				#plain-text-url {
+					top: 15%;
 					width: 90%;
 				}
-				.topText {
+				.bottom-text {
 					bottom: 11%;
 					width: 15em;
 				}
@@ -100,15 +120,19 @@
 				p, a, #btn {
 					font-size: 1em;
 				}
+
 				#btn {
 					top: 3%;
 					width: 16em;
 				}
-				#plainTextURL {
-					top: 12%;
+				#copy-confirmation {
+					top: 6%;
+				}
+				#plain-text-url {
+					top: 15%;
 					width: 90%;
 				}
-				.topText {
+				.bottom-text {
 					bottom: 11%;
 					width: 15em;
 				}
@@ -118,23 +142,34 @@
 		<script type="text/javascript" src="bower_components/paper/dist/paper-full.min.js"></script>
 	</head>
 	<body>
-		<p id="instructions" class="topText">Click to make petals.</p>
-		<p id="message" class="topText">
-			Someone made you this flower because they care about
-			you.<br />Hope it made you smile.</p>
-		<a id="reset" href="" onclick="window.location.href = window.location.href.split('#')[0];">Start over</a>
+		<div id="top-text-wrapper">
+			<button id="btn" data-clipboard-text="" data-clipboard-action="copy">
+				Copy URL to clipboard to share
+			</button>
+			<p id="copy-confirmation">Copied!</p>
+			<code id="plain-text-url"></code>
+		</div>
 		<canvas id="myCanvas" resize="true"></canvas>
+		<p id="instructions" class="bottom-text">Click to make petals.</p>
+		<p id="message" class="bottom-text">
+			Someone made you this flower because they care about
+			you.<br />Hope it made you smile.
+		</p>
+		<a id="reset" href="" class="bottom-text" onclick="window.location.href = window.location.href.split('#')[0];">Start over</a>
 		<!-- Trigger -->
-		<button id="btn" data-clipboard-text="" data-clipboard-action="copy">
-			    Copy URL to clipboard to share
-		</button>
-		<a id="make_your_own" href="#">Make your own to share</a>
-		<code id="plainTextURL"></code>
 		<script type="text/javascript" src="./bower_components/clipboard/dist/clipboard.min.js"></script>
 		<script type="text/paperscript" src="./flower.js" canvas="myCanvas"></script>
 		<script type="text/javascript">
 			var button = document.getElementById("btn");
 			var clipboard = new Clipboard(button);
+			var copyConfirmationText = document.getElementById("copy-confirmation");
+			clipboard.on('success', function(e) {
+				copyConfirmationText.style.display = 'inline-block';
+			});
+			clipboard.on('error', function(e) {
+				copyConfirmationText.innerHTML = "Didn't work...\nTry copying the url below.";
+				copyConfirmationText.style.display = 'inline-block';
+			});
 		</script>
 	</body>
 </html>
